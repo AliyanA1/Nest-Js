@@ -1,12 +1,19 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  @Get('Users')
+  getAllUser(): { message: string } {
+    return { message: 'here is all the users' };
+  }
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('Users/myid')
+  getMyId(): { message: string } {
+    return { message: 'my id is 1234' };
+  }
+
+  @Get('admin')
+  getAdmin(): { message: string } {
+    return { message: 'here is the admin panel' };
   }
 }
